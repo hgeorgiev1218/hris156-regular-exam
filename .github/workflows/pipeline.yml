@@ -1,0 +1,27 @@
+name: hris156 regular exam CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout the repository
+      uses: actions/checkout@v4
+    - name: Use Node.js 21.x
+      uses: actions/setup-node@v4
+      with:
+        node-version: 21.x
+        cache: 'npm'
+    - name: Install NPM dependencies
+      run: npm install
+    - name: Run the unit tests
+      run: npm run test:unit
+    - name: Display softuni username
+      run: echo "hris156"
